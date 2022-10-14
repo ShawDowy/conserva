@@ -109,19 +109,19 @@ int main()
 
 
 		int z = 0;
-		int dec_3 = 0;
-		int f_ = 4;
+		int dec_float = 0;
+		int degree_4 = 4;
 
 
 		while (z < arrlen_float)
 		{
-			int f = z + 1;
-			dec_3 += ((int)bin_float[z] - 48) * pow(2, f_ - f);
-			if (f % 4 == 0)
+			int counter_4 = z + 1;
+			dec_float += ((int)bin_float[z] - 48) * pow(2, degree_4 - counter_4);
+			if (counter_4 % 4 == 0)
 			{
-				cout << hex << dec_3;
-				f_ += 4;
-				dec_3 = 0;
+				cout << hex << dec_float;
+				degree_4 += 4;
+				dec_float = 0;
 			}
 			++z;
 		}
