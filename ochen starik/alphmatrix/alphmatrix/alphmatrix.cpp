@@ -3,8 +3,8 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
-#define MAX_N 5
-#define MAX_M 4
+#define MAX_N 1
+#define MAX_M 100
 
 using namespace std;
 
@@ -25,7 +25,7 @@ void matrix_sort(char** x, int const n, int const m, char** new_x)
 			new_x[i][j] = x[i][j];
 		}
 	}
-	return ;
+	return;
 }
 
 
@@ -67,7 +67,7 @@ int main()
 	matrix_output(new_matrix, MAX_N, MAX_M);
 
 
-	for (int i = 0; i < MAX_N - 1; i++)
+	for (int i = 0; i < MAX_N; i++)
 		delete[] new_matrix[i];
 	delete[] new_matrix;
 
