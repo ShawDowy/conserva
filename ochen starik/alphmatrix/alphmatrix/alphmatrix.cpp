@@ -31,12 +31,12 @@ void matrix_sort(char** x, int const n, int const m, char** new_x)
 
 void matrix_output(char** x, int const n, int const m)
 {
-	std::cout << "Matrix: " << std::endl;
+	cout << "Matrix: " << endl;
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < m; j++)
-			std::cout << x[i][j];
-		std::cout << std::endl;
+			cout << x[i][j];
+		cout << endl;
 	}
 	return;
 }
