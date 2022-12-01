@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void matrix_sort(char** x, int const n, int const m, char** new_x)
+void matrix_sort(char** x, char** new_x)
 {
 	for (int i = 0; i < MAX_N; i++)
 	{
@@ -29,12 +29,12 @@ void matrix_sort(char** x, int const n, int const m, char** new_x)
 }
 
 
-void matrix_output(char** x, int const n, int const m)
+void matrix_output(char** x)
 {
 	cout << "Matrix: " << endl;
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < MAX_N; i++)
 	{
-		for (int j = 0; j < m; j++)
+		for (int j = 0; j < MAX_M; j++)
 			cout << x[i][j];
 		cout << endl;
 	}
