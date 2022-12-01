@@ -3,16 +3,15 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
-#define MAX_N 1
-#define MAX_M 100
+#define MAX_N 5
+#define MAX_M 20
 
 using namespace std;
 
-void matrix_sort(char** x, char** new_x)
+void matrix_sort(char** x)
 {
 	for (int i = 0; i < MAX_N; i++)
 	{
-		new_x[i] = new char[MAX_M];
 		for (int j = 0; j < MAX_M; j++)
 		{
 			for (int k = MAX_M - 1; k > j; k--)
@@ -22,7 +21,6 @@ void matrix_sort(char** x, char** new_x)
 					x[i][k] = x[i][k - 1];
 					x[i][k - 1] = tmp;
 				}
-			new_x[i][j] = x[i][j];
 		}
 	}
 	return;
@@ -61,15 +59,9 @@ int main()
 
 	cout << endl;
 
-	char** new_matrix = new char* [MAX_N];
+	matrix_sort(matrix);
+	matrix_output(matrix);
 
-	matrix_sort(matrix, new_matrix);
-	matrix_output(new_matrix);
-
-
-	for (int i = 0; i < MAX_N; i++)
-		delete[] new_matrix[i];
-	delete[] new_matrix;
 
 	for (int i = 0; i < MAX_N; i++)
 		delete[] matrix[i];
