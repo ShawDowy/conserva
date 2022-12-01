@@ -57,14 +57,14 @@ int main()
 			matrix[i][j] = char(min_random + (rand() % (max_random - min_random + 1)));
 	}
 
-	matrix_output(matrix, MAX_N, MAX_M);
+	matrix_output(matrix);
 
 	cout << endl;
 
 	char** new_matrix = new char* [MAX_N];
 
-	matrix_sort(matrix, MAX_N, MAX_M, new_matrix);
-	matrix_output(new_matrix, MAX_N, MAX_M);
+	matrix_sort(matrix, new_matrix);
+	matrix_output(new_matrix);
 
 
 	for (int i = 0; i < MAX_N; i++)
