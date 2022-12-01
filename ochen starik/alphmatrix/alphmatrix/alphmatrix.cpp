@@ -18,9 +18,9 @@ void matrix_sort(char** x, char** new_x)
 			for (int k = MAX_M - 1; k > j; k--)
 				if (int(x[i][k]) < int(x[i][k - 1]))
 				{
-					int tmp = int(x[i][k]) ;
+					char tmp = x[i][k] ;
 					x[i][k] = x[i][k - 1];
-					int(x[i][k - 1]) = tmp;
+					x[i][k - 1] = tmp;
 				}
 			new_x[i][j] = x[i][j];
 		}
