@@ -14,10 +14,12 @@ struct vehicle
 
 void ShowData(vehicle* M, int N)
 {
-	cout << "Date" << setw(15) << "Car brand" << setw(15) << "Year" << setw(15) << "Colour" << setw(15) << "Number" << "\n\n";
+	cout <<"List" << setw(15) << "Date" << setw(15) << "Car brand" << setw(15) << "Year" << setw(15) << "Colour" << setw(15) << "Number" << "\n\n";
 	for (int i = 0; i < N; i++)
 	{
-		cout << M[i].date
+		cout << i+1
+			<< setw(15)
+			<< M[i].date
 			<< setw(15)
 			<< M[i].car_brand
 			<< setw(15)
@@ -29,6 +31,7 @@ void ShowData(vehicle* M, int N)
 		cout << endl;
 	}
 	cout << "\n";
+	return;
 }
 
 void GetData(vehicle* M, int N)
@@ -52,6 +55,7 @@ void GetData(vehicle* M, int N)
 		cout << "Number: ";
 		cin >> M[i].number;
 	}
+	return;
 }
 
 void find_structure(vehicle* M, int N)
@@ -59,15 +63,15 @@ void find_structure(vehicle* M, int N)
 	cout << "\n";
 
 	char date[12];
-	cout << "Date: ";
+	cout << "Date of vehicle: ";
 	cin >> date;
 
 	char car_brand[30];
-	cout << "Car brand: ";
+	cout << "Car brand of vehicle: ";
 	cin >> car_brand;
 
 	char number[12];
-	cout << "Number: ";
+	cout << "Number of vehicle: ";
 	cin >> number;
 
 	cout << endl;
@@ -76,7 +80,9 @@ void find_structure(vehicle* M, int N)
 	{
 		if ((strcmp(M[i].date, date) == 0) and (strcmp(M[i].car_brand, car_brand) == 0) and (strcmp(M[i].number, number) == 0))
 		{
-			cout << M[i].date
+			cout << i+1
+				<< setw(15)
+				<< M[i].date
 				<< setw(15)
 				<< M[i].car_brand
 				<< setw(15)
@@ -89,41 +95,53 @@ void find_structure(vehicle* M, int N)
 			return;
 		}
 	}
-	cout << "There is no such";
+	cout << "There is no such structure";
+	cout << endl;
 	return;
 	
 }
 
-void del_structure(vehicle* M, int N, int X)
+void swap_structure(vehicle* M, int N, int X)
 {
-	if (N > X)
-	{
 		for (int i = X-1; i < N; ++i)
 		{
 			vehicle &tmp = M[i];
 			M[i] = M[i+1];
 			M[i+1] = tmp;
 		}
-	}
+		return;
 }
 
 
 int main()
 {
+	int Number_of_vehicles;
+	cout << "Write N: ";
+	cin >> Number_of_vehicles;
+
+	vehicle* Massive_of_vehicles = new vehicle[Number_of_vehicles];
+	GetData(Massive_of_vehicles, Number_of_vehicles);
+
 	system("cls");
-	int N; cout << "Write N: "; cin >> N;
-	vehicle* M = new vehicle[N]; 
-	GetData(M, N); 
-	system("cls");
-	ShowData(M, N);
-	int x;
+	ShowData(Massive_of_vehicles, Number_of_vehicles);
+
+	find_structure(Massive_of_vehicles, Number_of_vehicles);
+
+	int list_to_del;
 	cout << endl;
-	cout << "Choose to del: ";
-	cin >> x;
+	cout << "Choose list that you want to delete :";
+	cin >> list_to_del;
 	cout << endl;
-	del_structure(M, N, x);
-	ShowData(M, N - 1);
-	delete[]M;
-	system("pause");
+	if (Number_of_vehicles >= list_to_del)
+	{
+		swap_structure(Massive_of_vehicles, Number_of_vehicles, list_to_del);
+		ShowData(Massive_of_vehicles, Number_of_vehicles - 1);
+	}
+	else
+	{
+		cout << "There is no such list" << endl;
+	}
+
+	delete[]Massive_of_vehicles;
 	return 0;
 }
